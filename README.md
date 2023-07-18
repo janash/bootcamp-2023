@@ -7,6 +7,13 @@ bootcamp_2023
 
 A sample package for the 2023 MSF bootcamp.
 
+This repository is currently under development.
+To do a development install, clone this repository and type
+
+`pip install -e .`
+
+in the repository directory.
+
 ### Copyright
 
 Copyright (c) 2023, Jessica Nash
