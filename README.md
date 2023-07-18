@@ -14,6 +14,8 @@ To do a development install, clone this repository and type
 
 in the repository directory.
 
+This package requires `numpy` and `matplotlib`.
+
 ### Copyright
 
 Copyright (c) 2023, Jessica Nash
