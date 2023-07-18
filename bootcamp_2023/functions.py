@@ -5,32 +5,8 @@ import matplotlib.pyplot as plt
 
 from mpl_toolkits.mplot3d import Axes3D
 
-
-def calculate_distance(rA: np.ndarray, rB: np.ndarray)->float:
-    """
-    Calculate the distance between two points.
-
-    Parameters
-    ----------
-    rA, rB : np.ndarray
-        The coordinates of each point.
-
-    Returns
-    -------
-    distance : float
-        The distance between the two points.
-
-    Examples
-    --------
-    >>> r1 = np.array([0, 0, 0])
-    >>> r2 = np.array([0, 0.1, 0])
-    >>> calculate_distance(r1, r2)
-    0.1
-    """
-    d = rA - rB
-    dist = np.linalg.norm(d)
-    return dist
-
+from .atom_data import atom_colors
+from .measure import calculate_distance
 
 def open_pdb(f_loc):
     # This function reads in a pdb file and returns the atom names and coordinates.
@@ -45,18 +21,6 @@ def open_pdb(f_loc):
             c.append(c2)
     coords = np.array(c)
     return sym, coords
-
-
-atomic_weights = {
-    "H": 1.00784,
-    "C": 12.0107,
-    "N": 14.0067,
-    "O": 15.999,
-    "P": 30.973762,
-    "F": 18.998403,
-    "Cl": 35.453,
-    "Br": 79.904,
-}
 
 
 def open_xyz(file_location):
@@ -129,13 +93,6 @@ def draw_molecule(coordinates, symbols, draw_bonds=None, save_location=None, dpi
     return ax
 
 
-def calculate_angle(rA, rB, rC, degrees=False):
-    # Calculate the angle between three points. Answer is given in radians by default, but can be given in degrees
-    # by setting degrees=True
-    AB = rB - rA
-    BC = rB - rC
-    theta = np.arccos(np.dot(AB, BC) / (np.linalg.norm(AB) * np.linalg.norm(BC)))
-
     if degrees:
         return np.degrees(theta)
     else:
@@ -179,18 +136,6 @@ def build_bond_list(coordinates, max_bond=1.5, min_bond=0):
 
     return bonds
 
-
-atom_colors = {
-    "H": "white",
-    "C": "#D3D3D3",
-    "N": "#add8e6",
-    "O": "red",
-    "P": "#FFA500",
-    "F": "#FFFFE0",
-    "Cl": "#98FB98",
-    "Br": "#F4A460",
-    "S": "yellow",
-}
 
 
 def canvas(with_attribution:bool=True):
