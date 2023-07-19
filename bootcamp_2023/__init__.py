@@ -2,6 +2,7 @@
 
 # Add imports here
 from .functions import *
+from .measure import calculate_angle
 
 
 from ._version import __version__
